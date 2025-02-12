@@ -99,7 +99,6 @@ prometheus = ["prometheus_client"]
 standalone = ["graphsrv", "vodka"]
 whisper = ["whisper"]
 zeromq = ["pyzmq"]
-icmp = ["icmplib"]
 
 # all extras
 all = [
