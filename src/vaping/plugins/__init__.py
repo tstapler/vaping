@@ -1,7 +1,7 @@
 import abc
 import collections.abc
 import copy
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import logging
 import os
 
@@ -291,7 +291,7 @@ class TimedProbe(ProbeBase):
             if elapsed.total_seconds() > self.interval:
                 self.log.warning("probe time exceeded interval")
             else:
-                sleeptime = datetime.timedelta(seconds=self.interval) - elapsed
+                sleeptime = timedelta(seconds=self.interval) - elapsed
                 await vaping.io.sleep(sleeptime.total_seconds())
 
 
