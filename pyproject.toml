@@ -64,6 +64,9 @@ whisper = { version = ">=0.9.15, <2", optional = true }
 # zeromq
 pyzmq = { version = ">=15.3.0", optional = true }
 
+# icmp
+icmplib = { version = ">=3.0.3", optional = true }
+
 [tool.poetry.dev-dependencies]
 # tests
 coverage = ">=5.3"
@@ -96,11 +99,13 @@ prometheus = ["prometheus_client"]
 standalone = ["graphsrv", "vodka"]
 whisper = ["whisper"]
 zeromq = ["pyzmq"]
+icmp = ["icmplib"]
 
 # all extras
 all = [
     "graphsrv",
     "graphyte",
+    "icmplib",
     "prometheus_client",
     "pyzmq",
     "rrdtool",
