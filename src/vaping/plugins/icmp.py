@@ -46,8 +46,15 @@ class ICMP(vaping.plugins.TimedProbe):
     def init(self):
         """Initialize the probe with hosts from config"""
         self.hosts = []
-        for name, group_config in list(self.groups.items()):
-            self.hosts.extend(group_config.get("hosts", []))
+        # Handle both legacy dict and new list format for groups
+        if isinstance(self.config.get("groups"), dict):
+            # Legacy format
+            for name, group_config in list(self.config["groups"].items()):
+                self.hosts.extend(group_config.get("hosts", []))
+        else:
+            # New format
+            for group_config in self.config.get("groups", []):
+                self.hosts.extend(group_config.get("hosts", []))
 
     def get_host_address(self, host):
         """Extract host address from config item"""

@@ -8,11 +8,12 @@ def test_icmp_probe():
         "interval": "5s",
         "count": 2,
         "ping_interval": 0.2,
-        "groups": {
-            "test_group": {
+        "groups": [
+            {
+                "name": "test_group",
                 "hosts": ["127.0.0.1"]
             }
-        }
+        ]
     }
     
     probe = vaping.plugins.icmp.ICMP(config, None)
