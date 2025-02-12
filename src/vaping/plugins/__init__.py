@@ -273,7 +273,7 @@ class TimedProbe(ProbeBase):
     async def _run(self):
         self.run_level = 1
         while self.run_level:
-            start = datetime.datetime.now()
+            start = datetime.now()
 
             # since the TimedProbe will sleep between cycles
             # we need to emit all queued emissions each cycle
@@ -286,7 +286,7 @@ class TimedProbe(ProbeBase):
             else:
                 self.log.debug("probe returned no data")
 
-            done = datetime.datetime.now()
+            done = datetime.now()
             elapsed = done - start
             if elapsed.total_seconds() > self.interval:
                 self.log.warning("probe time exceeded interval")
