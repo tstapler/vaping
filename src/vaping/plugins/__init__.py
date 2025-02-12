@@ -1,7 +1,7 @@
 import abc
 import collections.abc
 import copy
-import datetime
+from datetime import datetime, timezone
 import logging
 import os
 
@@ -112,7 +112,7 @@ class PluginBase(vaping.io.Thread):
         msg["type"] = self.plugin_type
         msg["source"] = self.name
         msg["ts"] = (
-            datetime.datetime.utcnow() - datetime.datetime(1970, 1, 1)
+            datetime.now(timezone.utc) - datetime(1970, 1, 1, tzinfo=timezone.utc)
         ).total_seconds()
         return msg
 
